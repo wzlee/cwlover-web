@@ -1,1 +1,21 @@
-target/
+# temporary files #
+*.class
+target
+logs
+*.log
+*.tmp
+version.properties
+
+# IDEA #
+*.iml
+.idea
+
+# eclipse #
+.settings
+.classpath
+.project
+
+# Package Files #
+*.jar
+*.war
+*.ear
