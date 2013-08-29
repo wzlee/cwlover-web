@@ -13,19 +13,18 @@ public class Variety implements Serializable {
 	@Id
 	private String id;
 	private String varietyName;
-	private String category;
+	private String picture;
 	private String introduction;
 	private String tips;
-	public Variety() {
-		super();
-	}
-	public Variety(String varietyName, String category, String introduction,
-			String tips) {
+	private String category;
+	public Variety(String varietyName, String picture, String introduction,
+			String tips, String category) {
 		super();
 		this.varietyName = varietyName;
-		this.category = category;
+		this.picture = picture;
 		this.introduction = introduction;
 		this.tips = tips;
+		this.category = category;
 	}
 	public String getId() {
 		return id;
@@ -39,11 +38,11 @@ public class Variety implements Serializable {
 	public void setVarietyName(String varietyName) {
 		this.varietyName = varietyName;
 	}
-	public String getCategory() {
-		return category;
+	public String getPicture() {
+		return picture;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	public String getIntroduction() {
 		return introduction;
@@ -57,11 +56,17 @@ public class Variety implements Serializable {
 	public void setTips(String tips) {
 		this.tips = tips;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	@Override
 	public String toString() {
 		return "Variety [id=" + id + ", varietyName=" + varietyName
-				+ ", category=" + category + ", introduction=" + introduction
-				+ ", tips=" + tips + "]";
+				+ ", picture=" + picture + ", introduction=" + introduction
+				+ ", tips=" + tips + ", category=" + category + "]";
 	}
 	
 }

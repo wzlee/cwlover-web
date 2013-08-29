@@ -1,9 +1,11 @@
 package com.wzlee.cwl.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.Reference;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1702775342069014883L;
-	
+
 	@Id
 	private String id;
 	private String userName;
@@ -26,15 +28,21 @@ public class Person implements Serializable {
 	private String city;
 	private String district;
 	private String village;
-	
+	private double[] location;
+	private boolean online = false;
+	private Date loginDate = new Date();
+	private String status = "未激活";
+	private Date registerDate = new Date(); 
+
 	public Person() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Person(String userName, String password, String nickName,
+	@PersistenceConstructor
+	Person(String userName, String password, String nickName,
 			String headshot, Integer age, String sex, List<Pet> pets,
-			String province, String city, String district, String village) {
+			String province, String city, String district, String village,
+			double[] location) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -47,6 +55,25 @@ public class Person implements Serializable {
 		this.city = city;
 		this.district = district;
 		this.village = village;
+		this.location = location;
+	}
+
+	public Person(String userName, String password, String nickName,
+			String headshot, Integer age, String sex, List<Pet> pets,
+			String province, String city, String district, String village,double x, double y) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.nickName = nickName;
+		this.headshot = headshot;
+		this.age = age;
+		this.sex = sex;
+		this.pets = pets;
+		this.province = province;
+		this.city = city;
+		this.district = district;
+		this.village = village;
+		this.location = new double[] { x, y };
 	}
 
 	public String getId() {
@@ -145,6 +172,38 @@ public class Person implements Serializable {
 		this.village = village;
 	}
 
+	public double[] getLocation() {
+		return location;
+	}
+
+	public void setLocation(double[] location) {
+		this.location = location;
+	}
+
+	public boolean isOnline() {
+		return online;
+	}
+	public void setOnline(boolean online) {
+		this.online = online;
+	}
+	public Date getLoginDate() {
+		return loginDate;
+	}
+	public void setLoginDate(Date loginDate) {
+		this.loginDate = loginDate;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Date getRegisterDate() {
+		return registerDate;
+	}
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
+	}
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", userName=" + userName + ", password="

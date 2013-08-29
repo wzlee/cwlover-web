@@ -44,7 +44,8 @@ public class MongoDBTest {
 	public void JsoupData() throws ParseException{
 		logger.info("greb data begin...");
 		long startMili=System.currentTimeMillis();
-		String url = "http://dog.chongwujiaoyi.com/";
+//		String url = "http://dog.chongwujiaoyi.com/";
+		String url = "http://www.92kucat.com/special/arc-677.html";
 		int i = 0;
 		try {
 			Connection conn = Jsoup.connect(url).timeout(100000).maxBodySize(10000000);
@@ -53,9 +54,9 @@ public class MongoDBTest {
 			Document doc = Jsoup.parse(html);
 //			System.out.println(doc.html());
 			logger.info("Jsoup成功获取连接的Document!");
-			Elements gss = doc.select(".gs");
+			Elements gss = doc.select(".ico3 table");
 			for(Element gs:gss){
-				varietyRepository.save(new Variety(gs.child(1).text()+"("+gs.child(2).text()+")","dog","http://dog.chongwujiaoyi.com/"+gs.child(0).child(0).attr("src"),"可爱"));
+				varietyRepository.save(new Variety(gs.child(1).text(),"http://dog.chongwujiaoyi.com/"+gs.child(0).child(0).attr("src"),gs.child(2).text(),"可爱","dog"));
 				i++;
 				logger.info("插入第["+i+"]条数据到MongoDB...");
 			}

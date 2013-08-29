@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.wzlee.cwl.domain.Pet;
 
-public interface PetRepsoitory extends CrudRepository<Pet, Serializable> {
+public interface PetRepository extends CrudRepository<Pet, Serializable> {
 }
