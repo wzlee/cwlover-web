@@ -32,6 +32,7 @@ Ext.define('cwlover.controller.MainController',{
         console.log("["+value.title+"] activated...");
     },
     onCheckLogined:function(newActiveItem, mypets, oldActiveItem){
+    	console.log(cwlover.util.Config.location);
 //    	console.log(newActiveItem);
 //    	console.log(mypets);
 //    	console.log(oldActiveItem);

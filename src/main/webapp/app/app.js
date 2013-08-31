@@ -23,6 +23,7 @@ Ext.application({
     name: 'cwlover',
 
     requires: [
+    	'cwlover.util.Config',
         'Ext.MessageBox',
         'Ext.TitleBar',
         'Ext.Video',
@@ -36,7 +37,7 @@ Ext.application({
         'Ext.device.Geolocation',
         'Ext.data.proxy.LocalStorage'
     ],
-
+	profiles: ['Phone', 'Tablet'],
     models: ['Local','Pet','Variety'],
     stores: ['Local','Variety'],
     views: ['Main','LoginPanel','RegisterPanel','VarietyList','NearList','MyPets'],
@@ -103,6 +104,8 @@ Ext.application({
         // var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
         // map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别 
         // console.log(location.getAt(0).data.value);
+        cwlover.util.Config.location = location;
+        cwlover.util.Config.token = token;
     },
 
     onUpdated: function() {
