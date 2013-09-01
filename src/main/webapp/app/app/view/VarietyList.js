@@ -3,6 +3,10 @@ Ext.define('cwlover.view.VarietyList', {
     xtype: 'varietylist',
 
     config: {
+        title: '宠物百科',
+        iconCls: 'favorites',
+        useSimpleItems: true,
+        variableHeights: true,
         masked: {
             xtype: 'loadmask',
             message: '努力加载中...'

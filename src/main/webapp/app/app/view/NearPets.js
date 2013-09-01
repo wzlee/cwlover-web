@@ -1,8 +1,11 @@
-Ext.define('cwlover.view.NearList', {
+Ext.define('cwlover.view.NearPets', {
     extend: 'Ext.List',
-    xtype: 'nearlist',
+    xtype: 'nearpets',
 
     config: {
+	 	title: '附近宠物',
+        iconCls: 'maps',
+
         masked: {
             xtype: 'loadmask',
             message: '努力加载中...'
@@ -10,7 +13,6 @@ Ext.define('cwlover.view.NearList', {
         store: 'Variety',
         grouped: true,
         pinHeaders: true,
-        emptyText: '<div style="margin-top: 20px; text-align: center">搜索结果为空!</div>',
         itemTpl: [
             '<div style="margin:10 20;">',
                 '<img style="float:left;margin-right:10px;" src="{picture}" width="50" height="40"/>',
@@ -29,15 +31,11 @@ Ext.define('cwlover.view.NearList', {
                 items: [
                     { xtype: 'spacer' },
                     {
-                        xtype: 'searchfield',
-                        placeHolder: 'Search...',
-                        listeners: {
-                            scope: this
-                            // clearicontap: this.onSearchClearIconTap,
-                            // keyup: this.onSearchKeyUp
-                        }
-                    },
-                    { xtype: 'spacer' }
+                        xtype: 'button',
+                        text:'刷新',
+                        id:'refresh-nearpets',
+                        ui: 'action-round'
+                    }
                 ]
             }
         ]
