@@ -1,6 +1,7 @@
 package com.wzlee.cwl.controller;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import com.wzlee.cwl.repositories.PersonRepository;
 import com.wzlee.cwl.repositories.VarietyRepository;
 import com.wzlee.cwl.view.JSONData;
 import com.wzlee.cwl.view.MessageResult;
+import com.wzlee.cwl.view.Profile;
 import com.wzlee.cwl.view.VerifyResult;
 
 @Controller
@@ -67,7 +69,7 @@ public class PublicController extends BaseController {
 			}
 	}
 	
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public void logoutPerson(@RequestParam("callback")String callback,HttpServletRequest request,HttpServletResponse response) {
 		Person person = (Person) request.getSession().getAttribute("person");
 		if(person==null){
@@ -78,7 +80,23 @@ public class PublicController extends BaseController {
 		}
 	}
 	
-	@RequestMapping(value = "/near", method = RequestMethod.POST)
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public void loadProfile(@RequestParam("callback")String callback,HttpServletRequest request,HttpServletResponse response) {
+		Person person = (Person) request.getSession().getAttribute("person");
+		if(person==null){
+			this.outJsonP(response, callback,new MessageResult(false, "Session未创建或已过期!"));
+		}else{
+			List<Profile> profiles = new ArrayList<Profile>();
+			profiles.add(new Profile("username","账号","wzlee",true,""));
+			profiles.add(new Profile("mypets","我的宠物","10(收养:1,关注:9)",true,"mypets"));
+			profiles.add(new Profile("email","邮箱绑定","wzlee@cwlover.com",false,""));
+			profiles.add(new Profile("weibo","微博绑定","未绑定",true,"bindweibo"));
+			profiles.add(new Profile("version","版本信息","v 1.0",true,"versioninfo"));
+			this.outJsonP(response, callback,new JSONData<Profile>(true,profiles,profiles.size()));
+		}
+	}
+	
+	@RequestMapping(value = "/near", method = RequestMethod.GET)
 	public void findNearer(@RequestParam("callback")String callback,HttpServletRequest request,HttpServletResponse response) {
 		Person person = (Person) request.getSession().getAttribute("person");
 		if(person==null){

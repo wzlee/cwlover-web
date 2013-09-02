@@ -7,21 +7,7 @@ Ext.define('cwlover.view.Main', {
 
         items: [
             {
-                title: '附近宠物',
-                iconCls: 'maps',
-
-                items: [
-                    {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: '附近宠物'
-                    },
-                    {
-                        xtype: 'nearlist',
-                        useSimpleItems: true,
-                        variableHeights: true
-                    }
-                ]
+               xtype:'nearpets'
             },
             {
                 title: '宠物商城',
@@ -43,18 +29,10 @@ Ext.define('cwlover.view.Main', {
                 ].join("")
             },
             {
-                xtype:'varietylist',
-                title: '宠物百科',
-                iconCls: 'favorites',
-                useSimpleItems: true,
-                variableHeights: true
+                xtype:'varietylist'
             },
             {
-                xtype:'mypets',
-                title: '我的宠物',
-                iconCls: 'settings',
-                useSimpleItems: true,
-                variableHeights: true
+                xtype:'ucenter'
             }
         ]
     }

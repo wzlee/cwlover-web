@@ -6,26 +6,6 @@ Ext.define('cwlover.view.LoginPanel', {
         // margin:10,
         items: [
             {
-                docked: 'top',
-                xtype: 'toolbar',
-                title: '用户登录',
-                items: [
-                    {
-                        xtype: 'button',
-                        text:'注册',
-                        id:'goRegister',
-                        ui:'forward'
-                    },
-                    { xtype: 'spacer' },
-                    {
-                        xtype: 'button',
-                        text:'登录',
-                        id:'doLogin',
-                        ui: 'action'
-                    }
-                ]
-            },
-            {
                 xtype:'container',
                 layout:'vbox',
                 margin:10,

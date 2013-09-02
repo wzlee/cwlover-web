@@ -38,10 +38,11 @@ Ext.application({
         'Ext.data.proxy.LocalStorage'
     ],
 	profiles: ['Phone', 'Tablet'],
-    models: ['Local','Pet','Variety'],
-    stores: ['Local','Variety'],
-    views: ['Main','LoginPanel','RegisterPanel','VarietyList','NearList','MyPets'],
+    models: ['Local','Pet','Variety','Profile'],
+    stores: ['Local','Variety','Profile'],
+    views: ['Main','LoginPanel','RegisterPanel','VarietyList','NearPets','ProfileList','Ucenter'],
     controllers:['MainController'],
+    
     icon: {
         '57': 'resources/icons/Icon.png',
         '72': 'resources/icons/Icon~ipad.png',
@@ -61,20 +62,8 @@ Ext.application({
     },
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
-        // Initialize the main view
         Ext.Viewport.add(Ext.create('cwlover.view.Main'));
-        // Ext.device.Geolocation.watchPosition({
-        //     frequency: 3000, // Update every 3 seconds
-        //     callback: function(position) {
-        //         console.log('Position updated!', position.coords);
-        //     },
-        //     failure: function() {
-        //         console.log('something went wrong!');
-        //     }
-        // });
         var local = Ext.data.StoreManager.lookup('local');
         if(local == undefined){
             local = Ext.create('cwlover.store.Local',{
@@ -100,10 +89,6 @@ Ext.application({
             }
         });
         geo.updateLocation();
-        // var map = new BMap.Map("baidumap");          // 创建地图实例  
-        // var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
-        // map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别 
-        // console.log(location.getAt(0).data.value);
         cwlover.util.Config.location = location;
         cwlover.util.Config.token = token;
     },
