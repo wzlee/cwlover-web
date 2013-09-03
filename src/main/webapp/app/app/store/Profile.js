@@ -3,7 +3,7 @@ Ext.define('cwlover.store.Profile', {
 	
     config: {
         model: 'cwlover.model.Profile',
-//        autoLoad: true,
+        autoLoad: true,
         proxy: {
             type: 'jsonp',
             url: 'http://localhost:8080/public/profile'

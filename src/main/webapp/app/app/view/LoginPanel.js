@@ -1,14 +1,17 @@
 Ext.define('cwlover.view.LoginPanel', {
-    extend: 'Ext.Panel',
+    extend: 'Ext.form.Panel',
     xtype: 'loginpanel',
 
     config: {
-        // margin:10,
+     	margin:10,
         items: [
             {
-                xtype:'container',
-                layout:'vbox',
-                margin:10,
+             	xtype: 'fieldset',
+                title: '',
+        		instructions: '忘记密码请联系管理员!',
+                defaults: {
+                    labelWidth: '35%'
+                },
                 items:[
                     {
                         xtype: 'textfield',
@@ -29,21 +32,17 @@ Ext.define('cwlover.view.LoginPanel', {
                     },
                     {
                         xtype: 'checkboxfield',
-                        name : 'storeUsername',
-                        label: '记住账号',
-                        checked: true
-                    },
-                    {
-                        xtype: 'checkboxfield',
                         name : 'keepLogin',
                         label: '保持登录',
                         checked: true
                     }
                 ]
+            },
+            {
+            	xtype:'button',
+            	id:'doLogin',
+            	text:'登录'
             }
         ]
-    },
-    formSubmit:function(){
-        console.log('login...');
     }
 });

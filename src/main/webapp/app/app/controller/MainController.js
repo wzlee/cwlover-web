@@ -4,10 +4,12 @@ Ext.define('cwlover.controller.MainController',{
     config: {
         refs: {
             mainview:'mainview',
-            registerButton:'#register',
-            loginButton:'#login',
+            goRegister:'#goRegister',
+            goLogin:'#goLogin',
             loginpanel: 'loginpanel',
             registerpanel: 'registerpanel',
+            doRegister:'#doRegister',
+            doLogin:'#doLogin',
             varietyList:'varietyList',
             nearlist:'nearlist',
             profilelist:'profilelist',
@@ -21,11 +23,17 @@ Ext.define('cwlover.controller.MainController',{
             varietyList: {
                 itemtap: 'onVarietySelect'
             },
-            regisutton:{	
-            	tab:'onShowRegister'
+            goRegister:{	
+            	tap:'onShowRegister'
             },
-            loginButton:{
-				tab:'onShowLogin'            
+            goLogin:{
+				tap:'onShowLogin'            
+            },
+            doRegister:{	
+            	tap:'onSubmitRegister'
+            },
+            doLogin:{
+				tap:'onSubmitLogin'            
             },
             ucenter: {
                 activate: 'onLoadProfile'
@@ -39,14 +47,12 @@ Ext.define('cwlover.controller.MainController',{
     onLoadProfile:function(list){
     	this.getProfilelist().getStore().load({
 		    callback: function(records, operation, success) {
-		        if(!success){
-		        	if (!this.loginpanel) {
-			            this.loginpanel = Ext.widget('loginpanel');
-			        }
-		        	this.getUcenter().push(this.loginpanel);
-			        this.getRegisterButton().show();
+		        if(success){
+			        this.getGoRegister().hide();
+		        	this.getGoLogin().hide();
 		        }else{
-		        	this.getRegisterButton().hide();
+		        	this.getGoRegister().hide();
+		        	this.getGoLogin().show();
 		        }
 		    },
 		    scope: this
@@ -57,7 +63,41 @@ Ext.define('cwlover.controller.MainController',{
             this.registerpanel = Ext.widget('registerpanel');
         }
     	this.getUcenter().setActiveItem(this.registerpanel);
-    	this.getRegisterButton().hide();
-    	this.getLoginButton().hide();
+    	this.getGoRegister().hide();
+    	this.getGoLogin().show();
+    },
+    onShowLogin:function(){
+    	if (!this.loginpanel) {
+            this.loginpanel = Ext.widget('loginpanel');
+        }
+    	this.getUcenter().setActiveItem(this.loginpanel);
+    	this.getGoLogin().hide();
+    	this.getGoRegister().show();
+    },
+    onSubmitRegister:function(){
+    	this.getRegisertpanel().submit({
+    		method :'GET',
+    		url:'http://localhost:8080/public/register',
+    		waitMsg:'登录验证中...',
+    		success:function(form,result){
+    			console.log(result);
+    		},
+    		failure :function(form,result){
+    			console.log(result);
+    		}
+    	});
+    },
+    onSubmitLogin:function(){
+    	this.getLoginpanel().submit({
+    		method :'GET',
+    		url:'http://localhost:8080/public/login',
+//    		waitMsg:'登录验证中...',
+    		success:function(form,result){
+    			console.log(result);
+    		},
+    		failure :function(form,result){
+    			console.log(result);
+    		}
+    	});
     }
 });

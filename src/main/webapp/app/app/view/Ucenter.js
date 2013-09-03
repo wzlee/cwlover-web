@@ -6,40 +6,31 @@ Ext.define('cwlover.view.Ucenter', {
 		title : '用户中心',
         iconCls: 'user',
 
+        defaultBackButtonText:'返回',
         autoDestroy: false,
         navigationBar: {
-//            ui: 'sencha',
             items: [
                 {
                     xtype: 'button',
-                    id: 'register',
+                    id: 'goRegister',
                     text: '注册',
-                    align: 'right',
-                    hidden: true,
-                    hideAnimation: Ext.os.is.Android ? false : {
-                        type: 'fadeOut',
-                        duration: 200
-                    },
-                    showAnimation: Ext.os.is.Android ? false : {
-                        type: 'fadeIn',
-                        duration: 200
-                    }
+                    ui:'action',
+                    align: 'right'
                 },
                 {
                     xtype: 'button',
-                    id: 'login',
+                    id: 'goLogin',
                     text: '登录',
-                    ui: 'sencha',
-                    align: 'right',
-                    hidden: true,
-                    hideAnimation: Ext.os.is.Android ? false : {
-                        type: 'fadeOut',
-                        duration: 200
-                    },
-                    showAnimation: Ext.os.is.Android ? false : {
-                        type: 'fadeIn',
-                        duration: 200
-                    }
+                    ui:'action',
+                    align: 'right'
+//                    hideAnimation: Ext.os.is.Android ? false : {
+//                        type: 'fadeOut',
+//                        duration: 200
+//                    },
+//                    showAnimation: Ext.os.is.Android ? false : {
+//                        type: 'fadeIn',
+//                        duration: 200
+//                    }
                 }
             ]
         },

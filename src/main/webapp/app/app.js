@@ -29,6 +29,7 @@ Ext.application({
         'Ext.Video',
         'Ext.Map',
         'Ext.data.proxy.JsonP',
+        'Ext.form.FieldSet',
         'Ext.field.Search',
         'Ext.field.Checkbox',
         'Ext.List',

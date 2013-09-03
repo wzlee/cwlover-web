@@ -3,10 +3,10 @@ Ext.define('cwlover.view.ProfileList', {
     xtype: 'profilelist',
 
     config: {
-//        masked: {
-//            xtype: 'loadmask',
-//            message: '信息加载中...'
-//        },
+        masked: {
+            xtype: 'loadmask',
+            message: '信息加载中...'
+        },
         store: 'Profile',
         emptyText:'<img src="resources/icons/pet.png"/><br>请先登录!',
         itemTpl: [
