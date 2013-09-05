@@ -6,18 +6,12 @@ Ext.define('cwlover.view.LoginPanel', {
      	margin:10,
         items: [
             {
-<<<<<<< HEAD
-                xtype:'container',
-                layout:'vbox',
-                margin:10,
-=======
              	xtype: 'fieldset',
                 title: '',
         		instructions: '忘记密码请联系管理员!',
                 defaults: {
                     labelWidth: '35%'
                 },
->>>>>>> 61e0b7ab79b4b6ef42414006eb80ad4a5e30482b
                 items:[
                     {
                         xtype: 'textfield',
