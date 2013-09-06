@@ -26,6 +26,7 @@ Ext.define('cwlover.view.NearPets', {
         items: [
             {
                 xtype: 'toolbar',
+                title:'附近宠物',
                 docked: 'top',
 
                 items: [
